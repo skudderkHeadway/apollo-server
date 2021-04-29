@@ -19,10 +19,18 @@ const typeDefs = gql`
     user: User!
   }
 
+  type Link {
+    id: Int!
+    url: String!
+    slug: String!
+  }
+
   type Query {
     user(id: Int!): User
     allRecipes: [Recipe!]!
     recipe(id: Int!): Recipe
+    allLinks: [Link!]!
+    link(id: Int!): Link
   }
 
   type Mutation {
@@ -33,6 +41,7 @@ const typeDefs = gql`
       ingredients: String!
       direction: String!
     ): Recipe!
+    createLink(url: String!, slug: String!): Link!
   }
 `;
 
