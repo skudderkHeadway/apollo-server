@@ -56,6 +56,12 @@ const resolvers = {
     },
     async recipe(root, { id }, { models }) {
       return models.Recipe.findByPk(id);
+    },
+    async allLinks(root, args, { models }) {
+      return models.Link.findAll();
+    },
+    async link(root, { id }, { models }) {
+      return models.Link.findByPk(id);
     }
   },
   Mutation: {
@@ -72,6 +78,12 @@ const resolvers = {
       { models }
     ) {
       return models.Recipe.create({ userId, title, ingredients, direction });
+    },
+    async createLink(root, { url, slug }, { models }) {
+      return models.Link.create({
+        url,
+        slug
+      });
     }
   },
   User: {
